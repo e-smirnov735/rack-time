@@ -1,5 +1,7 @@
-require_relative 'middleware/routing'
 require_relative 'app'
 
-use Routing
-run App.new
+ROUTES = {
+  '/time' => App.new
+}.freeze
+
+run Rack::URLMap.new(ROUTES)
